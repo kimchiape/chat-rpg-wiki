@@ -158,6 +158,38 @@ footer{max-width:var(--maxw);margin:0 auto;padding:26px 16px 50px;color:var(--mu
 .pager button:not(:disabled):hover{background:var(--chip)}
 .pager .pinfo{color:var(--muted);font-size:.86rem;font-weight:600;min-width:150px;text-align:center}
 td,th{padding:7px 10px}
+/* news */
+.news{display:flex;flex-direction:column;gap:10px}
+.news-item{display:flex;gap:12px;background:var(--panel);border:1px solid var(--line);border-radius:12px;
+  padding:12px 14px;box-shadow:var(--shadow)}
+.news-item>div{flex:1}
+.news-item p{margin:.25em 0 0;color:var(--muted);font-size:.92rem}
+.news-date{flex:none;font-family:system-ui,sans-serif;font-size:.72rem;font-weight:800;color:#1a1206;
+  background:linear-gradient(145deg,var(--gold2),var(--gold));border-radius:8px;padding:4px 8px;height:fit-content;
+  white-space:nowrap}
+/* favorites + top */
+.favbtn{border:none;background:none;cursor:pointer;font-size:1.05rem;line-height:1;padding:2px 4px;opacity:.35;
+  filter:grayscale(1)}
+.favbtn.on{opacity:1;filter:none}
+.favcell{width:34px;text-align:center}
+.topbadge{display:inline-block;margin-left:6px;font-size:.82rem;cursor:help}
+tr.isfav{background:color-mix(in srgb,var(--atk) 7%,transparent)}
+.slotnote{font-size:.82rem;margin:-4px 0 12px}
+/* mobile card view */
+@media(max-width:640px){
+  #dbTable thead{display:none}
+  #dbTable, #dbTable tbody{display:block;width:100%}
+  #dbTable tr{display:block;border:1px solid var(--line);border-radius:12px;margin:0 0 10px;padding:8px 12px;
+    background:var(--panel);position:relative}
+  #dbTable td{display:flex;justify-content:space-between;align-items:center;gap:14px;border:none;
+    padding:4px 0;text-align:right}
+  #dbTable td::before{content:attr(data-label);font-weight:700;color:var(--muted);text-align:left;
+    font-family:system-ui,sans-serif;font-size:.76rem;text-transform:uppercase;letter-spacing:.03em}
+  #dbTable td.favcell{position:absolute;top:8px;right:8px;width:auto;padding:0}
+  #dbTable td.favcell::before{content:none}
+  #dbTable td.distcell{display:none}
+  .dbwrap{border:none;background:transparent;overflow:visible}
+}
 </style>
 </head>
 <body>
@@ -169,6 +201,7 @@ td,th{padding:7px 10px}
   </div>
   <nav class="tabbar">
     <a href="#start">Start</a>
+    <a href="#news">News</a>
     <a href="#befehle">Befehle</a>
     <a href="#quests">Quests</a>
     <a href="#kampf">Kämpfe</a>
@@ -201,6 +234,20 @@ td,th{padding:7px 10px}
     <div class="card tight"><div class="ic">🐉</div><h3>6 Bosse</h3><p class="muted">Eine Leiter mit eigener Beute und Siegeln.</p></div>
     <div class="card tight"><div class="ic">⏱️</div><h3>7–24 Uhr</h3><p class="muted">Spielzeit. Quests alle 45 Minuten, erster Erfolg des Tages zählt doppelt.</p></div>
   </div>
+</section>
+
+<section id="news">
+  <h2><span class="n">📰</span>News &amp; Patchnotes</h2>
+  <p>Die letzten Änderungen am Spiel (aus dem offiziellen Changelog). Wird aktualisiert, sobald ein Update-Lauf bei laufendem PC den Changelog einliest.</p>
+  <div class="news">
+    <div class="news-item"><span class="news-date">07.10.2026</span><div><b>Boss-Empfehlungen ehrlich &amp; aufgeräumt</b><p>Die Empfehlung ist jetzt Ausrüstung und realistischer: Rattenkönigin 125, Lek'mhir 210, Finanzamt 270, Loserqueue 400, Mel'Khmal 470, Ostmauer 550. Kampfmeldungen aufs Handy kommen schneller.</p></div></div>
+    <div class="news-item"><span class="news-date">06.10.2026</span><div><b>Schmelzofen wählbar &amp; Werkstatt gehört der Gilde</b><p>Im Schmelzofen wählst du jetzt Platz &amp; Ausrichtung des Ergebnisses. Persönliche Berufe sind weg – jede Gilde hat Schmiede &amp; Lager, gebaut aus der Gildenkasse.</p></div></div>
+    <div class="news-item"><span class="news-date">06.10.2026</span><div><b>Talente neu: Keystones &amp; Lebensweg</b><p>In Reihe 3 &amp; 5 jedes Kampfbaums wählst du einen Keystone. Gold, Erfahrung, Funde, Verschleiß &amp; Reparatur stecken jetzt im eigenen Lebensweg-Baum.</p></div></div>
+    <div class="news-item"><span class="news-date">05.10.2026</span><div><b>Mehr Wege durch Abenteuer, Handwerk als Geschäft</b><p>Jedes Abenteuer hat mehr Szenen, dieselbe kommt seltener. Hergestelltes darf wieder auf den Markt – nur Stücke aus Siegeln bleiben gebunden.</p></div></div>
+    <div class="news-item"><span class="news-date">04.10.2026</span><div><b>Talente = feste Werte, Mitnehmen kostenlos</b><p>Jeder Talentpunkt gibt feste +3 (Boss +4, Abenteuer/Überfall +5). Schwächere Mitkämpfer machen den Boss nicht mehr zäher. Erste gelungene Quest des Tages bringt doppeltes Gold.</p></div></div>
+    <div class="news-item"><span class="news-date">03.10.2026</span><div><b>Das große Update: Geschichten, Haltbarkeit, Boss-Leiter</b><p>Abenteuer als Geschichten mit Entscheidungen, Ausrüstung mit Haltbarkeit (0–100 %), Bosse als Leiter mit Siegeln, Gildengebäude statt Projekten.</p></div></div>
+  </div>
+  <p class="muted" style="margin-top:8px">Vollständiger Verlauf: <a href="https://rpg.sola.rip/changelog/" target="_blank" rel="noopener">rpg.sola.rip/changelog</a></p>
 </section>
 
 <section id="befehle">
@@ -317,11 +364,26 @@ td,th{padding:7px 10px}
     <span class="pill" data-role="Schildträger" aria-pressed="false">🛡️ Schildträger</span>
     <span class="pill" data-role="Unterstützer" aria-pressed="false">✨ Unterstützer</span>
   </div>
+  <div class="pills" id="togglePills">
+    <span class="pill" id="pillTop" data-on="0" aria-pressed="false">⭐ Nur Top-Werte</span>
+    <span class="pill" id="pillFav" data-on="0" aria-pressed="false">❤ Nur Favoriten</span>
+  </div>
   <div class="controls">
     <div class="fld"><label for="fTier">Stufe</label>
       <select id="fTier"><option value="">Alle Stufen</option></select></div>
-    <div class="fld"><label for="fClass">Itemklasse</label>
-      <select id="fClass"><option value="">Alle Klassen</option></select></div>
+    <div class="fld"><label for="fSlot">Platz</label>
+      <select id="fSlot">
+        <option value="">Alle Plätze</option>
+        <option value="Einhandwaffe">Einhandwaffe (1H)</option>
+        <option value="Zweihandwaffe">Zweihandwaffe (2H)</option>
+        <option value="Schild">Schild</option>
+        <option value="Ring">Ring</option>
+        <option value="Helm">Helm</option>
+        <option value="Brustpanzer">Brustpanzer</option>
+        <option value="Handschuhe">Handschuhe</option>
+        <option value="Beinschutz">Beinschutz</option>
+        <option value="Stiefel">Stiefel</option>
+      </select></div>
     <div class="fld"><label for="fSearch">Suche (Name)</label>
       <input type="search" id="fSearch" placeholder="z.B. Schlächter, Turmschild …"></div>
     <div class="fld"><label for="fSort">Sortieren</label>
@@ -342,9 +404,11 @@ td,th{padding:7px 10px}
       </select></div>
     <div class="count" id="count"></div>
   </div>
-  <div class="tablewrap">
+  <p class="muted slotnote">Hinweis: Rüstungswerte (Helm, Brust, Handschuhe, Beinschutz, Stiefel) sind je Form &amp; Stufe identisch – der Platz entscheidet nur, wo das Stück sitzt. <span class="est">⭐</span> = höchster Hauptwert seiner Rolle in dieser Klasse &amp; Stufe. <span class="est">❤</span> speichert Favoriten lokal in deinem Browser.</p>
+  <div class="tablewrap dbwrap">
     <table id="dbTable">
       <thead><tr>
+        <th aria-label="Favorit"></th>
         <th class="sortable" data-k="tier">Stufe</th>
         <th class="sortable" data-k="class">Klasse</th>
         <th class="sortable" data-k="name">Form</th>
@@ -553,20 +617,45 @@ ITEMS.forEach(i=>{tierName[i.tier]=i.tierName; matName[i.tier]=i.material.replac
   });
 })();
 
-// populate filters
+// populate Stufe-Filter
 (function(){
   const ft=document.getElementById('fTier');
   const tiers=[...new Set(ITEMS.map(i=>i.tier))].sort((a,b)=>a-b);
   tiers.forEach(t=>{const o=document.createElement('option');o.value=t;
     o.textContent='T'+t+' '+tierName[t]+(ITEMS.find(i=>i.tier==t&&i.est)?' ≈':'');ft.appendChild(o);});
-  const fc=document.getElementById('fClass');
-  ['1H-Waffe','2H-Waffe','Schild','Rüstung','Ring'].forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;fc.appendChild(o);});
 })();
 
 const roleSlug=r=>({'Kämpfer':'atk','Schildträger':'def','Unterstützer':'supp'})[(r||'').split('/')[0]]||'mix';
 const esc=s=>(s||'').replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'})[c]);
 
-const state={role:'',tier:'',cls:'',q:'',sort:'tier',dir:null,sortKey:null,page:1,per:50};
+// Platz -> Itemklasse(n). Rüstungsplätze teilen sich dieselben Werte (Klasse "Rüstung").
+const SLOT_MAP={'Einhandwaffe':['1H-Waffe'],'Zweihandwaffe':['2H-Waffe'],'Schild':['Schild'],'Ring':['Ring'],
+  'Helm':['Rüstung'],'Brustpanzer':['Rüstung'],'Handschuhe':['Rüstung'],'Beinschutz':['Rüstung'],'Stiefel':['Rüstung']};
+
+// Top-Werte: höchster Hauptwert je (Stufe, Klasse, Rolle)
+const TOP=new Set();
+(function(){
+  const best={};
+  ITEMS.forEach(i=>{
+    const rs=roleSlug(i.role); if(rs==='mix')return;
+    const k=i.tier+'|'+i.class+'|'+rs; const v=i[rs];
+    if(best[k]===undefined||v>best[k])best[k]=v;
+  });
+  ITEMS.forEach(i=>{
+    const rs=roleSlug(i.role); if(rs==='mix')return;
+    const k=i.tier+'|'+i.class+'|'+rs;
+    if(i[rs]===best[k]&&i[rs]>0)TOP.add(itemKey(i));
+  });
+})();
+
+function itemKey(i){return i.tier+'|'+i.class+'|'+i.name;}
+
+// Favoriten (localStorage)
+let FAV=new Set();
+try{ FAV=new Set(JSON.parse(localStorage.getItem('crpg-fav')||'[]')); }catch(e){}
+function saveFav(){ try{ localStorage.setItem('crpg-fav',JSON.stringify([...FAV])); }catch(e){} }
+
+const state={role:'',tier:'',slot:'',q:'',sort:'tier',dir:null,sortKey:null,page:1,per:50,top:false,fav:false};
 function reset1(){state.page=1;render();}
 
 function bar(i){
@@ -581,7 +670,9 @@ function render(){
   let rows=ITEMS.filter(i=>
     (!state.role||roleSlug(i.role)===roleSlug(state.role)||i.role.includes(state.role)) &&
     (!state.tier||i.tier==state.tier) &&
-    (!state.cls||i.class===state.cls) &&
+    (!state.slot||(SLOT_MAP[state.slot]||[]).includes(i.class)) &&
+    (!state.top||TOP.has(itemKey(i))) &&
+    (!state.fav||FAV.has(itemKey(i))) &&
     (!state.q||i.name.toLowerCase().includes(state.q)||i.class.toLowerCase().includes(state.q)||i.material.toLowerCase().includes(state.q))
   );
   const key=state.sortKey||state.sort;
@@ -601,19 +692,21 @@ function render(){
   const pageRows=(state.per==='all')?rows:rows.slice(start,start+per);
   const body=pageRows.map(i=>{
     const rs=roleSlug(i.role);
-    return `<tr>
-      <td><span class="mat"><span class="tchip">T${i.tier}</span>${esc(i.material.replace(' (?)',''))}${i.est?' <span class="est" title="berechnet/geschätzt">≈</span>':''}</span></td>
-      <td>${esc(i.class)}</td>
-      <td>${esc(i.name)}</td>
-      <td><span class="role r-${rs}">${esc(i.role)}</span></td>
-      <td class="num s-atk">${i.atk||'·'}</td>
-      <td class="num s-def">${i.def||'·'}</td>
-      <td class="num s-supp">${i.supp||'·'}</td>
-      <td class="num"><b>${i.sum}</b></td>
-      <td>${bar(i)}</td>
+    const key=itemKey(i); const fav=FAV.has(key); const top=TOP.has(key);
+    return `<tr class="${fav?'isfav':''}">
+      <td class="favcell"><button class="favbtn${fav?' on':''}" data-key="${esc(key)}" title="Favorit" aria-label="Favorit">${fav?'❤':'🤍'}</button></td>
+      <td data-label="Stufe"><span class="mat"><span class="tchip">T${i.tier}</span>${esc(i.material.replace(' (?)',''))}${i.est?' <span class="est" title="berechnet/geschätzt">≈</span>':''}</span></td>
+      <td data-label="Klasse">${esc(i.class)}</td>
+      <td data-label="Form">${esc(i.name)}${top?' <span class="topbadge" title="Höchster Hauptwert seiner Rolle in dieser Klasse &amp; Stufe">⭐</span>':''}</td>
+      <td data-label="Rolle"><span class="role r-${rs}">${esc(i.role)}</span></td>
+      <td data-label="ATK" class="num s-atk">${i.atk||'·'}</td>
+      <td data-label="DEF" class="num s-def">${i.def||'·'}</td>
+      <td data-label="SUPP" class="num s-supp">${i.supp||'·'}</td>
+      <td data-label="Σ" class="num"><b>${i.sum}</b></td>
+      <td class="distcell" data-label="Verteilung">${bar(i)}</td>
     </tr>`;
   }).join('');
-  document.getElementById('dbBody').innerHTML=body||'<tr><td colspan="9" style="text-align:center;padding:26px" class="muted">Keine Items gefunden.</td></tr>';
+  document.getElementById('dbBody').innerHTML=body||'<tr><td colspan="10" style="text-align:center;padding:26px" class="muted">Keine Items gefunden.</td></tr>';
   const shownFrom=total?start+1:0, shownTo=Math.min(total,start+per);
   document.getElementById('count').textContent=total?(shownFrom+'–'+shownTo+' von '+total):'0 von '+ITEMS.length;
   renderPager(total,pages);
@@ -632,7 +725,7 @@ function renderPager(total,pages){
 }
 
 document.getElementById('fTier').addEventListener('change',e=>{state.tier=e.target.value;reset1();});
-document.getElementById('fClass').addEventListener('change',e=>{state.cls=e.target.value;reset1();});
+document.getElementById('fSlot').addEventListener('change',e=>{state.slot=e.target.value;reset1();});
 document.getElementById('fSearch').addEventListener('input',e=>{state.q=e.target.value.toLowerCase().trim();reset1();});
 document.getElementById('fPer').addEventListener('change',e=>{state.per=(e.target.value==='all')?'all':parseInt(e.target.value,10);reset1();});
 document.getElementById('fSort').addEventListener('change',e=>{state.sort=e.target.value;state.sortKey=null;state.dir=null;
@@ -641,6 +734,23 @@ document.getElementById('rolePills').addEventListener('click',e=>{
   const p=e.target.closest('.pill'); if(!p)return;
   document.querySelectorAll('#rolePills .pill').forEach(x=>x.setAttribute('aria-pressed','false'));
   p.setAttribute('aria-pressed','true'); state.role=p.dataset.role; reset1();
+});
+document.getElementById('pillTop').addEventListener('click',function(){
+  state.top=!state.top; this.setAttribute('aria-pressed',state.top?'true':'false'); reset1();
+});
+document.getElementById('pillFav').addEventListener('click',function(){
+  state.fav=!state.fav; this.setAttribute('aria-pressed',state.fav?'true':'false'); reset1();
+});
+// Favoriten-Klick (Delegation)
+document.getElementById('dbBody').addEventListener('click',e=>{
+  const b=e.target.closest('.favbtn'); if(!b)return;
+  const k=b.dataset.key;
+  if(FAV.has(k))FAV.delete(k); else FAV.add(k);
+  saveFav();
+  if(state.fav){render();} else {
+    const on=FAV.has(k); b.classList.toggle('on',on); b.textContent=on?'❤':'🤍';
+    b.closest('tr').classList.toggle('isfav',on);
+  }
 });
 document.querySelectorAll('#dbTable th.sortable').forEach(th=>{
   th.addEventListener('click',()=>{
